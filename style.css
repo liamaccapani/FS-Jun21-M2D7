@@ -5,7 +5,7 @@ h1 {
 
 
 /*EX2) Write a selector to target every children of the navbar */
- nav.nav  a {
+ nav.nav  a {   /* better nav * to select every elem, not just the a */
    background-color: hotpink;
  }
  
@@ -38,19 +38,29 @@ h1 {
 
 
 /* EX7) Write a selector to target all the li into the first ordered-list in the sidebar ( Archives ) */
-    aside.blog-sidebar ol:first-of-type li a {
+    /* aside.blog-sidebar ol:first-of-type li a {
         color: red;
-    } 
-
+    }  */
     /* Not working */
+
+    aside > .p-4:nth-of-type(2) ol:first-of-type li {
+        background-color: rgb(226, 160, 215);
+      }
+    /* second element with a class p-4 that is the parents of the first ul */
+
 
 
 
 /* EX8) Write a selector to target the second post author */
-    main.container div.blog-post:nth-child(3) { 
+    main.container div.blog-post:nth-of-type(2) {  
         color: teal;
         text-decoration: underline;
     }
+
+    /* main.container div.blog-post:nth-child(3) {  
+        color: teal;
+        text-decoration: underline;
+    } */
 
 
 
