@@ -27,6 +27,12 @@ const removeLinks = function() {
     container.remove()
 }
 
+const elsewhere = document.querySelector('.blog-sidebar div.p-4:nth-child(3) h4.font-italic')
+// console.log(elsewhere)
+
+elsewhere.addEventListener('click', removeLinks)
+
+
 // EX15) Write a function to change the column size for heading in jumbotron
 const changeColumnSize = function(){
     let headerContainer = document.querySelector('div.jumbotron > div')
@@ -52,7 +58,7 @@ const trimP = function() {
 // EX18) Write a function and attach it to the "Newer" button, to add new Blog Post (just div and title)
 let newerButton = document.querySelector('.blog-main nav.blog-pagination a.btn:nth-child(2)')
 
-const addPost = function() {
+const addPost = function(ev) {
     let containerNode = document.querySelector('div.blog-main')
     
     let newPostNode = document.createElement('div')
@@ -69,12 +75,9 @@ const addPost = function() {
 
     newPostNode.appendChild(newPostTitle)
     //console.log(newPostNode) <div class="blog-post"><h2 class="blog-post-title">New Post title</h2></div>
-
-    // newerButton.classList.toggle = 'selected' this is doing nothing
-
 }
 
-// newerButton.addEventListener('click', addPost()) not working because of 'disabled'?
+newerButton.addEventListener('click', addPost) //not working because of 'disabled'? Yes it was
 
 
 // EX19) Write a function and attach it to the "Older" button, to remove the last Blog Post
@@ -84,9 +87,14 @@ const removePost = function() {
     let containerNode = document.querySelectorAll('div.blog-main div.blog-post')
     //console.log(containerNode) array
 
-    containerNode[containerNode-1].remove()
+    containerNode[containerNode.length-1].remove()
 
 }
-//not working
+
+olderButton.addEventListener('click', removePost)
+//not removePost(), i have to pass the function as an argument in order to get it executed
 
 // EX20) Write an alert with the name of the author every time the user hover with the mouse over an author name
+
+let author = document.querySelectorAll('p.blog-post-meta a')
+//console.log(author) Nodelist length 3
